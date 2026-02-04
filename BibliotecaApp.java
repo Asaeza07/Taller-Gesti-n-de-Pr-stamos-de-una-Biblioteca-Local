@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BibliotecaApp {
-
     // prestamo = [idPrestamo, nombreUsuario, tituloLibro, diasPrestamo, multaPorDia]
     static ArrayList<ArrayList<Object>> prestamos = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
@@ -48,7 +47,16 @@ public class BibliotecaApp {
     static void eliminarPrestamo() { /* TODO */ }
 
     // ====== Cálculo (por implementar) ======
-    static void calcularTotalMultas() { /* TODO */ }
+    static void calcularTotalMultas() { 
+        int totalMultas = 0;
+        for (int i=0; i<prestamos.size(); i++) {
+            ArrayList<Object> prestamo = prestamos.get(i);
+            int diasPrestamo = (int) prestamo.get(3);
+            int multaPorDia = (int) prestamo.get(4);
+            totalMultas += diasPrestamo * multaPorDia;
+        }
+        System.out.println("Total de multas acumuladas: $" + totalMultas);
+    }
 
     // ====== Utilidades mínimas ======
     static int leerEntero(String msg) {
