@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BibliotecaApp {
-
+main protegido
     // prestamo = [idPrestamo, nombreUsuario, tituloLibro, diasPrestamo, multaPorDia]
     static ArrayList<ArrayList<Object>> prestamos = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
@@ -66,4 +66,7 @@ public class BibliotecaApp {
         System.out.print(msg);
         return sc.nextLine().trim();
     }
-}
+} 
+
+
+
