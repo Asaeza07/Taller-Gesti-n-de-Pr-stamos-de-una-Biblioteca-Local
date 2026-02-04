@@ -41,11 +41,64 @@ public class BibliotecaApp {
     }
 
     // ====== CRUD (por implementar) ======
-    static void registrarPrestamo() { /* TODO */ }
-    static void mostrarPrestamos() { /* TODO */ }
-    static void buscarPrestamoPorId() { /* TODO */ }
-    static void actualizarPrestamo() { /* TODO */ }
-    static void eliminarPrestamo() { /* TODO */ }
+    static void registrarPrestamo() {   
+    ArrayList<Object> prestamo = new ArrayList<>();
+        
+    System.out.println("ID:");
+    int id = sc.nextInt();
+    sc.nextLine();
+    System.out.println("Nombre:");
+    String nombre = sc.nextLine();
+    System.out.println("Libros:");
+    int libros = sc.nextInt();
+    sc.nextLine();
+    prestamo.add(id);
+    prestamo.add(nombre);
+    prestamo.add(libros);
+    prestamos.add(prestamo); }
+    static void mostrarPrestamos() {
+ if (prestamos.isEmpty()) {
+        System.out.println("No hay préstamos registradis");
+        return;
+    }
+    for (int i = 0; i < prestamos.size(); i++) {
+        ArrayList<Object> prestamo = prestamos.get(i);
+        System.out.println("Préstamo #" + (i + 1));
+        for (int j = 0; j < prestamo.size(); j++) {
+            System.out.println("  Dato " + j + ": " + prestamo.get(j));
+        } 
+    }     
+    }
+    static void buscarPrestamoPorId() {
+    System.out.println("Ingrese ID:");
+    int idBuscado = sc.nextInt();
+    sc.nextLine();
+    boolean encontrado = false;
+    for (ArrayList<Object> prestamo : prestamos) {
+        int id = (int) prestamo.get(0);
+        if (id == idBuscado) {
+System.out.println("ID: " + prestamo.get(0));
+System.out.println("Usuario: " + prestamo.get(1));
+System.out.println("Libros: " + prestamo.get(2));
+System.out.println("------------------");
+            encontrado = true;
+            break;
+        }
+    }
+    if (!encontrado) {
+        System.out.println("No existe ese préstamo.");
+    }  
+    }
+    static void actualizarPrestamo() {
+
+
+        
+    }
+    static void eliminarPrestamo() {
+
+
+        
+    }
 
     // ====== Cálculo (por implementar) ======
     static void calcularTotalMultas() { /* TODO */ }
