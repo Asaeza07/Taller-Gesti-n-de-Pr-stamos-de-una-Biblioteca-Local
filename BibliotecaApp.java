@@ -42,63 +42,135 @@ public class BibliotecaApp {
 
     // ====== CRUD (por implementar) ======
     static void registrarPrestamo() {   
-    ArrayList<Object> prestamo = new ArrayList<>();
-        
-    System.out.println("ID:");
+   ArrayList<Object> prestamo = new ArrayList<>();
+    System.out.println("ID del prestamo:");
     int id = sc.nextInt();
     sc.nextLine();
-    System.out.println("Nombre:");
+    System.out.println("Nombre del usuario:");
     String nombre = sc.nextLine();
-    System.out.println("Libros:");
-    int libros = sc.nextInt();
+    System.out.println("Titulo del libro:");
+    String libro = sc.nextLine();
+    System.out.println("Dias de prestamo:");
+    int dias = sc.nextInt();
+    sc.nextLine();
+    System.out.println("Multa por dia:");
+    double multa = sc.nextDouble();
     sc.nextLine();
     prestamo.add(id);
     prestamo.add(nombre);
-    prestamo.add(libros);
-    prestamos.add(prestamo); }
+    prestamo.add(libro);
+    prestamo.add(dias);
+    prestamo.add(multa);
+    prestamos.add(prestamo);
+    System.out.println("Prestamo registrado correctament"); }
     static void mostrarPrestamos() {
- if (prestamos.isEmpty()) {
-        System.out.println("No hay préstamos registradis");
+    if (prestamos.isEmpty()) {
+        System.out.println("No hay prestamos registrados");
         return;
     }
-    for (int i = 0; i < prestamos.size(); i++) {
-        ArrayList<Object> prestamo = prestamos.get(i);
-        System.out.println("Préstamo #" + (i + 1));
-        for (int j = 0; j < prestamo.size(); j++) {
-            System.out.println("  Dato " + j + ": " + prestamo.get(j));
-        } 
-    }     
+
+    for (ArrayList<Object> prestamo : prestamos) {
+        System.out.println("ID: " + prestamo.get(0));
+        System.out.println("Usuario: " + prestamo.get(1));
+        System.out.println("Libro: " + prestamo.get(2));
+        System.out.println("Dias de prestamo: " + prestamo.get(3));
+        System.out.println("Multa por dia: " + prestamo.get(4));
+        System.out.println("----------------------..");
     }
-    static void buscarPrestamoPorId() {
-    System.out.println("Ingrese ID:");
+    }
+  static void buscarPrestamoPorId() {
+    System.out.println("Ingrese ID a buscar:");
     int idBuscado = sc.nextInt();
     sc.nextLine();
+
     boolean encontrado = false;
+
     for (ArrayList<Object> prestamo : prestamos) {
         int id = (int) prestamo.get(0);
         if (id == idBuscado) {
-System.out.println("ID: " + prestamo.get(0));
-System.out.println("Usuario: " + prestamo.get(1));
-System.out.println("Libros: " + prestamo.get(2));
-System.out.println("------------------");
+            System.out.println("ID: " + prestamo.get(0));
+            System.out.println("Usuario: " + prestamo.get(1));
+            System.out.println("Libro: " + prestamo.get(2));
+            System.out.println("Dias de prestamo: " + prestamo.get(3));
+            System.out.println("Multa/dia: " + prestamo.get(4));
+            System.out.println("----------------------");
             encontrado = true;
             break;
         }
     }
+
     if (!encontrado) {
-        System.out.println("No existe ese préstamo.");
-    }  
+        System.out.println("No existe ese prrstamo.");
     }
-    static void actualizarPrestamo() {
+}
+  static void actualizarPrestamo() {
+    System.out.println("Ingrese ID del prrstamo a actualizar:");
+    int idBuscado = sc.nextInt();
+    sc.nextLine();
+
+    boolean encontrado = false;
+
+    for (ArrayList<Object> prestamo : prestamos) {
+        int id = (int) prestamo.get(0);
+        if (id == idBuscado) {
+    
+            System.out.println("Datos actuales:");
+            System.out.println("1. Usuario: " + prestamo.get(1));
+            System.out.println("2. Libro: " + prestamo.get(2));
+            System.out.println("3. Dias: " + prestamo.get(3));
+            System.out.println("4. Multapor día: " + prestamo.get(4));
+            
+    
+            System.out.println("Ingrese nuevo nombre de usuario:");
+            String nuevoNombre = sc.nextLine();
+            System.out.println("Ingrese nuevo título del libro:");
+            String nuevoLibro = sc.nextLine();
+            System.out.println("Ingrese nuevos días de préstamo:");
+            int nuevosDias = sc.nextInt();
+            sc.nextLine();
+            System.out.println("Ingrese nueva multa por día:");
+            double nuevaMulta = sc.nextDouble();
+            sc.nextLine();
+            
+            prestamo.set(1, nuevoNombre);
+            prestamo.set(2, nuevoLibro);
+            prestamo.set(3, nuevosDias);
+            prestamo.set(4, nuevaMulta);
 
 
-        
+
+            
+            System.out.println("Préstamo actualizado correctamente");
+            encontrado = true;
+            break;
+        }
     }
-    static void eliminarPrestamo() {
 
-
-        
+    if (!encontrado) {
+        System.out.println("No existe ese prestamo");
     }
+}
+ static void eliminarPrestamo() {
+    System.out.println("Ingrese ID del prestamo que quiere eliminar:");
+    int idBuscado = sc.nextInt();
+    sc.nextLine();
+
+    boolean encontrado = false;
+
+   for (int i = 0; i < prestamos.size(); i++) {
+    int id = (int) prestamos.get(i).get(0);
+    if (id == idBuscado) {
+        prestamos.remove(i);
+        System.out.println("Prestamo eliminado correctamente");
+        encontrado = true;
+        break;
+    }
+}
+
+    if (!encontrado) {
+        System.out.println("No existe ese prestamo.");
+    }
+}
 
     // ====== Cálculo (por implementar) ======
     static void calcularTotalMultas() { /* TODO */ }
