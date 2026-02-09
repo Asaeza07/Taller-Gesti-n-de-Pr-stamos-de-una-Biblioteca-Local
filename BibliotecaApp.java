@@ -54,7 +54,7 @@ public class BibliotecaApp {
     int dias = sc.nextInt();
     sc.nextLine();
     System.out.println("Multa por dia:");
-    double multa = sc.nextDouble();
+    float multa = sc.nextDouble();
     sc.nextLine();
     prestamo.add(id);
     prestamo.add(nombre);
@@ -129,7 +129,7 @@ public class BibliotecaApp {
             int nuevosDias = sc.nextInt();
             sc.nextLine();
             System.out.println("Ingrese nueva multa por día:");
-            double nuevaMulta = sc.nextDouble();
+            float nuevaMulta = sc.nextDouble();
             sc.nextLine();
             
             prestamo.set(1, nuevoNombre);
