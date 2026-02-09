@@ -30,6 +30,10 @@ public class BibliotecaApp {
 
             System.out.println();
 
+                case 7 -> System.out.println("Saliendo...");
+                default -> System.out.println("Opción inválida.");
+            }
+            System.out.println();
         } while (opcion != 7);
 
         sc.close();
@@ -98,6 +102,35 @@ git add
 git commit -m "Implementa menú base y estructura"
 
 git push origin main BibliotecaApp.Java
+    }
+
+    // ====== CRUD (por implementar) ======
+    static void registrarPrestamo() { /* TODO */ }
+    static void mostrarPrestamos() { /* TODO */ }
+    static void buscarPrestamoPorId() { /* TODO */ }
+    static void actualizarPrestamo() { /* TODO */ }
+    static void eliminarPrestamo() { /* TODO */ }
+
+    // ====== Cálculo (por implementar) ======
+    static void calcularTotalMultas() { /* TODO */ }
+
+    // ====== Utilidades mínimas ======
+    static int leerEntero(String msg) {
+        while (true) {
+            System.out.print(msg);
+            try {
+                return Integer.parseInt(sc.nextLine().trim());
+            } catch (Exception e) {
+                System.out.println("Ingrese un entero válido.");
+            }
+        }
+    }
+
+    static String leerTexto(String msg) {
+        System.out.print(msg);
+        return sc.nextLine().trim();
+    }
+} 
 
 
 
